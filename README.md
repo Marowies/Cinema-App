@@ -37,7 +37,7 @@ Tables:
   - ShowTimeId, MovieId, StartTime, EndTime
 - Tickets
   - TicketId, UserId, ShowTimeId, BookingDate, Status
-
+------------------------------------------------------------------------
  Technologies Used
 - C# .NET 8 / ASP.NET Core Web API  
 - Entity Framework Core  
@@ -49,8 +49,11 @@ Tables:
 Authentication
 This project uses JWT (JSON Web Token)for login and role-based authorization:
 | Role | Access |
+-------
 | Admin | Can add/edit/delete movies, manage showtimes |
+------
 | User | Can view movies, book and cancel tickets |
+-------
 When  you log in, you receive a JWT token that must be added to request headers:
 Authorization: Bearer <your_token_here>
 
@@ -59,27 +62,33 @@ Authorization: Bearer <your_token_here>
 
  AuthController
 | Method | Endpoint | Description |
+-----
 | POST | api/auth/register| Register a new user |
+-----
 | POST | api/auth/login| Login and receive JWT token |
-
+----
  MoviesController
 | Method | Endpoint | Description |
+----
 | GET | api/movies | Get all movies |
+----
 | POST | api/movies | Add a new movie (Admin only) |
+----
 | DELETE | api/movies/{id} | Remove a movie (Admin only) |
+----
 
  ShowTimesController
 | Method | Endpoint | Description |
+----
 | POST | api/showtimes | Add showtime for a movie (Admin only) |
+----
 | GET | api/showtimes/movie/{movieId} | Get showtimes for a specific movie |
-
+----
  TicketsController
 | Method | Endpoint | Description |
+---
 | POST | api/tickets/book?userId={userId}&showTimeId={showTimeId} | Book a ticket |
+----
 | PUT | api/tickets/cancel/{id} | Cancel a booked ticket |
+-----
 | GET | api/tickets | Get all tickets |
-
-
-
-
- 
